@@ -26,7 +26,6 @@ function handleConversion() {
     const display = document.getElementById('output');
     if (!val) return;
     
-    // If input is a number, go to Roman. If string, go to English.
     if (!isNaN(val)) {
         display.innerText = toRoman(parseInt(val));
     } else {
@@ -46,6 +45,16 @@ function handleConversion() {
 h1 {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
+h3 {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+button {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+input {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
 </style>
 </head>
 <body>
