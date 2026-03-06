@@ -1,4 +1,39 @@
 <!DOCTYPE html>
+<script>
+function toRoman(num) {
+    const map = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
+    let roman = '';
+    for (let i in map) {
+        while (num >= map[i]) { roman += i; num -= map[i]; }
+    }
+    return roman;
+}
+
+function fromRoman(str) {
+    const map = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000};
+    let total = 0;
+    str = str.toUpperCase();
+    for (let i = 0; i < str.length; i++) {
+        let current = map[str[i]], next = map[str[i+1]];
+        if (next > current) { total += next - current; i++; }
+        else { total += current; }
+    }
+    return total || "Invalid";
+}
+
+function handleConversion() {
+    const val = document.getElementById('userInput').value.trim();
+    const display = document.getElementById('output');
+    if (!val) return;
+    
+    // If input is a number, go to Roman. If string, go to English.
+    if (!isNaN(val)) {
+        display.innerText = toRoman(parseInt(val));
+    } else {
+        display.innerText = fromRoman(val);
+    }
+}
+</script>
 <html>
 <head>
 <title>Roman Numerals Website</title>
@@ -25,5 +60,17 @@ h1 {
 <img src="block.gif" alt="block">
 <img src="block.gif" alt="block">
 <img src="block.gif" alt="block">
+
+<div class="converter-box">
+    <h3>Roman Converter</h3>
+    <input type="text" id="userInput" placeholder="Enter 7 or VII">
+    <button onclick="handleConversion()">Convert</button>
+    <div id="output"></div>
+</div>
 </body>
 </html>
+
+
+
+
+
